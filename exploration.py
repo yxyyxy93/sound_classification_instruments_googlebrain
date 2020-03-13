@@ -42,5 +42,16 @@ for i in sample_files:
     plt.subplot(1, 1, 1)
     librosa.display.waveplot(y, sr=sr)
     plt.title('Monophonic')
+    plt.savefig('signal_wave/' + i + '.png')
+plt.show()
 
+for i in sample_files:
+    plt.figure(figsize=(10, 4))
+    y, sr = librosa.load(i)
+    ps = librosa.feature.melspectrogram(y=y, sr=sr)
+    plt.figure()
+    plt.subplot(1, 1, 1)
+    librosa.display.specshow(ps, y_axis='mel', x_axis='time')
+    plt.title('Monophonic')
+    plt.savefig('spectrum/' + i + '.png')
 plt.show()
